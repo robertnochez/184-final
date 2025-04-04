@@ -27,83 +27,154 @@
 	</head>
 	<body>
 		<div class="container">
-		<h1>CS184/284A Spring 2025 Homework 4 Write-Up</h1>
-		<div style="text-align: center;">Names: </div>
-
-		<br>
-
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/sp25">cs184.eecs.berkeley.edu/sp25</a>
-
-		<br>
-
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/sp25">cs184.eecs.berkeley.edu/sp25</a>
-
+		<h1>CS184/284A Spring 2025 Final Project Proposal</h1>
 		<figure>
-			<img src="clothsim.png" alt="Cloth draped over sphere" style="width:70%"/>
-			<figcaption>You can add images with captions!</figcaption>
+			<img src="/proposal_images/title.png" alt="title" style="width:70%"/>
 		</figure>
+		<div style="text-align: center;">Names: Isabella Alpert, Joel Castro, Jordan Duan & Robert Nochez</div>
+
+		<br>
+
+		Link to webpage: <a href="https://jordan-duan.github.io/184-final/proposal.html">https://jordan-duan.github.io/184-final/proposal.html</a>
+
+		<br>
 
 		<!--
 		We've already added one heading per part, to make your write-up as navigable when grading. Please fit your write-up within these sections!
 		-->
 
-		<h2>Overview</h2>
-		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
+		<h2>Summary</h2>
 
-		<h2>Part 1: Masses and springs</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+			We are building a voxel-based simulation, where we can simulate a physically-accurate object, such as a ball or 
+			ragdoll object, so it interacts with the world naturally as well as with collisions from the player using the 
+			JBullet physics engine. On top of this, we will incorporate modern computer graphic shading techniques like Blinn 
+			Phong, real time shadow rendering, reflections, and world environment collisions, all in Minecraft!
+		</p>
 
-		<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
-		<div style="display: flex; flex-direction: column; align-items: center;">
-			<table style="width: 100%; text-align: center; border-collapse: collapse;">
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="clothsim.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="clothsim.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="clothsim.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="clothsim.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			</table>
-		</div>
 
-		<h2>Part 2: Simulation via numerical integration</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<h2>Problem Description</h2>
+		<p>
+			In voxel worlds like Minecraft, dynamic objects are rare and generally lack realistic physical behavior or rich 
+			modern computer graphics shading. Typically, everything is axis-aligned, block-based, and interacts in limited,
+			non-physically accurate, ways. Our project seeks to explore what happens when you add a smooth, round, physically 
+			simulated object (like a ball or object ragdoll) into this environment—one that reacts to player movement and the 
+			environment using real physics. 
+		</p>
 
-		<h2>Part 3: Handling collisions with other objects</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+			We'll use JBullet to simulate forces, collisions, and responses between the object, the world, and the player. 
+			To enhance visual realism, we'll shade the object using techniques from physically-based rendering (PBR), add 
+			real-time shadows, and reflect the environment onto its surface with cube mapping. This blend of accurate motion 
+			and stylized rendering adds a new dimension to voxel based gameplay.
+		</p>
 
-		<h2>Part 4: Handling self-collisions</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<h2>Goals and Deliverables</h2>
 
-		<h2>Part 5: Shaders</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-		<h2>(Optional) Part 6: Extra Credit - Additional cloth simulation features!</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		
-		<h2>Additional Notes (please remove)</h2>
-		<ul>
-			<li>You can also add code if you'd like as so: <code>code code code</code></li>
-			<li>If you'd like to add math equations, 
-				<ul>
-					<li>You can write inline equations like so: \( a^2 + b^2 = c^2 \)</li>
-					<li>You can write display equations like so: \[ a^2 + b^2 = c^2 \]</li>
-				</ul>
+		<p><i>(1) What We Plan to Deliver (Baseline)</i></p>
+		<ol type="1">
+			<li>
+				Our project should allow us to simulate a rigid object, such as a ball, with accurate collision detection and 
+				physics using JBullet.
 			</li>
+			<li>
+				Player interactions and collisions, such as pushing and hitting, with our rigid objects will be implemented via 
+				ray-casting and bounding volume detection.
+
+			</li>
+			<li>
+				We plan to implement directional lighting and PBR-style shading, such as diffuse/specular, roughness, and 
+				metalness.
+
+			</li>
+			<li>
+				We will add real-time shadows to enhance depth and realism.
+			</li>
+			<li>
+				Finally, we want to render the object in a voxel scene, even if the object itself is represented as a sphere 
+				or capsule.
+			</li>
+		</ol>
+
+		<p><i>(2) What We Hope to Deliver (Stretch Goals)</i></p>
+		<ol type="1">
+			<li>
+				Instead of only using spheres, we hope to replace the ball with an articulated ragdoll using joint constraints.
+			</li>
+			<li>
+				To create more realistic lighting, we can use cube mapping for dynamic environment reflections on shiny surfaces.
+			</li>
+			<li>
+				Minecraft is a game with many different items and environments! As such, we want to add a material system to 
+				shift between soft (cloth-like) and hard (metallic) shading.
+			</li>
+			<li>
+				We are interested in rendering Minecraft in a unique style by implementing a stylized rendering style, such as 
+				toon or outline shaders and pixelation or reverse pixelation, for a more artistic effect.	
+			</li>
+			<li>
+				Finally, to continue to make our physics simulation more accurate, we hope to add soft-body or deformable physics.
+			</li>
+		</ol>
+
+
+		<h2>Schedule</h2>
+
+		<p><i>Week 1</i></p>
+		<ul>
+			<li>Set up environment: Java + JBullet</li>
+			<li>Read documentation on JBullet and on incorporation to Minecraft</li>
+			<li>Finalize how to incorporate 184 ideas and topics</li>
+			<li>Define or create a ball object in Blender or find a model</li>
+			<li>Test basic object simulations and collisions in voxel map</li>
 		</ul>
+
+		<p><i>Week 2</i></p>
+		<ul>
+			<li>Implement Raycasting for player hitting the ball, or ball collisions when falling</li>
+			<li>Integrate basic shading models like Lambert, Phong, Pixelization, Mirrors, etc.</li>
+		</ul>
+
+		<p><i>Week 3</i></p>
+		<ul>
+			<li>Physically based lighting, environment lighting, environment shadows, cube map reflections</li>
+			<li>Reflections of material, such as ball material being metal or wood etc.</li>
+		</ul>
+
+		<p><i>Week 4</i></p>
+		<ul>
+			<li>Polish demo scene</li>
+			<li>Add final UI improvements of GUI and/or in-game command tool</li>
+			<li>Include fun shading options and/or different objects/ragdoll objects</li>
+			<li>Record final presentation video</li>
+		</ul>
+
+		<h2>Resources</h2>
+		<p><i>Engines and Libraries</i></p>
+		<ul>
+			<li>JBullet Physics Engine: <a href="http://jbullet.advel.cz/">http://jbullet.advel.cz/</a></li>
+			<li>PyBullet: <a href="https://pybullet.org/wordpress/index.php/forum-2/">https://pybullet.org/wordpress/index.php/forum-2/</a></li>
+			<li>Java Port(s): <a href="http://jbullet.advel.cz/">http://jbullet.advel.cz/</a>, <a href="https://github.com/stephengold/Libbulletjme"></a></li>
+		</ul>
+
+		<p><i>Reference Materials</i></p>
+		<ul>
+			<li>184 Lecture Slides on Lighting, Shading, and Shadow Mapping</li>
+			<li>184 Lecture Slides on Introduction to Physical Simulation</li>
+			<li><a href="https://www.eecis.udel.edu/~cavazos/cisc879-spring2008/papers/Bullet_User_Manual.pdf">JBullet Guide</a></li>
+			<li><a href="https://docs.google.com/document/d/15TOAOVLgSNEoHGzpNlkez5cryH3hFF3awXL5Py81EMk/edit?tab=t.0#heading=h.56iz1ybwmq8e">Minecraft Shaders Guide</a></li>
+			<li><a href="https://thebookofshaders.com/">The Book of Shaders</a></li>
+			<li><a href="http://www.lighthouse3d.com/tutorials/glsl-tutorial/">GLSL Tutorial</a></li>
+			<li><a href="https://www.youtube.com/playlist?list=PLTRX9BDGoc4flt8c1t0UrqzyaVZw_F5eP">Shader YouTube Playlist by Cloud Wolf</a></li>
+		</ul>
+
+		<p><i>Hardware and Platforms</i></p>
+		<ul>
+			<li>Personal laptops for rendering</li>
+			<li>Github for version control</li>
+			<li>Building on top of the Minecraft game engine</li>
+		</ul>
+
 		</div>
 	</body>
 </html>
