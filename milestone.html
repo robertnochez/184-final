@@ -32,15 +32,11 @@
 			<img src="proposal_images/title.png" alt="title" style="width:70%"/>
 		</figure>
 		<div style="text-align: center;">Names: Isabella Alpert, Joel Castro, Jordan Duan & Robert Nochez</div>
-		<br>
 		<div style="text-align: center;">Link to webpage: <a href="https://jordan-duan.github.io/184-final/milestone.html">https://jordan-duan.github.io/184-final/milestone.html</a></div>
-		<br>
         <div style="text-align: center;">Link to slides: <a href="https://www.canva.com/design/DAGk9SlGd-0/InJkgiuHnE98-JC-avQnCQ/view?utm_content=DAGk9SlGd-0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8232c71df#1l">https://www.canva.com/design/milestone</a></div>
-		<br>
         <div style="text-align: center;">Link to video: <a href="https://jordan-duan.github.io/184-final/proposal.html">https://jordan-duan.github.io/184-final/proposal.html</a></div>
 		<br>
         
-
 		<h2>Updates</h2>
 
 		<p>
@@ -50,9 +46,17 @@
             us adding several of our milestone goals right away, including sky rendering with fog, stars, and clouds, shadow 
             mapping with distortion, water rendering, physically-based rendering, reflection and ray marching, and deferred 
             shading. We are planning to make a GUI or change keybinds to toggle different shaders with switch case functions 
-            (for example, 0=ambient, 1=diffusion, 2=specular, 3= blinn phong). We are also trying to tackle some edge cases 
+            (for example, 0=ambient, 1=diffusion, 2=specular, 3=blinn phong). We are also trying to tackle some edge cases 
             of how light from torches react to sunlight and entity shadows, and shadow self collisions. 
 		</p>
+
+        <p>
+            In preparation for integrating the JBullet physics engine, we explored working with either blocks or mobs, 
+            focusing on spherical modeling for both. Since Minecraft blocks are 16x16x16 cubes, we began by creating Java 
+            and OBJ files to generate spheres. Our first test used these models as gravity-affected blocks via MCreator, 
+            which behaved as expected. To enable movement and collision detection, our second test treated the spheres as 
+            entities, resulting in better mobility but requiring new animations to simulate rolling.
+        </p>
 
         <p>
             Relative to our original plan, we're roughly on schedule. We expected the shaders to be significantly more 
