@@ -34,8 +34,7 @@
 		<div style="text-align: center;">Names: Isabella Alpert, Joel Castro, Jordan Duan & Robert Nochez</div>
 		<div style="text-align: center;">Link to webpage: <a href="https://jordan-duan.github.io/184-final/milestone.html">https://jordan-duan.github.io/184-final/milestone.html</a></div>
         <div style="text-align: center;">Link to slides: <a href="https://www.canva.com/design/DAGk9SlGd-0/InJkgiuHnE98-JC-avQnCQ/view?utm_content=DAGk9SlGd-0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8232c71df#1l">https://www.canva.com/design/milestone</a></div>
-        <div style="text-align: center;">Link to video: <a href="https://jordan-duan.github.io/184-final/proposal.html">https://jordan-duan.github.io/184-final/proposal.html</a></div>
-		<br>
+        <div style="text-align: center;">Link to video: <a href="https://drive.google.com/file/d/1SNwVeLZUvSrC-TuK1PbLiX5h1ZSohYYs/view?usp=sharing">https://drive.google.com/file/milestone-video</a></div>
         
 		<h2>Updates</h2>
 
@@ -51,11 +50,12 @@
 		</p>
 
         <p>
-            In preparation for integrating the JBullet physics engine, we explored working with either blocks or mobs, 
-            focusing on spherical modeling for both. Since Minecraft blocks are 16x16x16 cubes, we began by creating Java 
-            and OBJ files to generate spheres. Our first test used these models as gravity-affected blocks via MCreator, 
-            which behaved as expected. To enable movement and collision detection, our second test treated the spheres as 
-            entities, resulting in better mobility but requiring new animations to simulate rolling.
+            In preparation for integrating the LibBulletJTime physics engine, we explored working with either blocks or mobs, 
+            focusing on spherical modeling for both. Our first test used these .obj renderings of spheres as block models, 
+            allowing us to use native Minecraft gravity support, such as that seen in gravel. To enable movement and collision 
+            detection, our second test modeled spheres as entities using .java modeling to place unit cubes along a radius 
+            with the sphere equation. Building on top of entities allows for better mobility but requires new animations to 
+            simulate rolling.
         </p>
 
         <p>
