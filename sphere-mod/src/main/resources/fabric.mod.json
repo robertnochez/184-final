@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "cs184spheremod",
+	"version": "${version}",
+	"name": "CS 184 Sphere Mod",
+	"description": "CS 184 Sphere Mod",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/cs184spheremod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.robert.cs184spheremod.CS184SphereMod"
+		],
+		"fabric-datagen": [
+			"net.robert.cs184spheremod.CS184SphereModDataGenerator"
+		]
+	},
+	"mixins": [
+		"cs184spheremod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.13",
+		"minecraft": "~1.20.2",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
