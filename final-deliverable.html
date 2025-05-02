@@ -103,15 +103,15 @@
 		</p>
 
 		<p>
-			<b>Grayscale:</b> The grayscale shader converts the scene’s colors to grayscale by calculating the luminance of each 
+			<b>Grayscale:</b> The grayscale shader converts the scene's colors to grayscale by calculating the luminance of each 
 			pixel. It uses a weighted average of the red, green, and blue channels to determine the brightness. This shader is 
 			ideal for creating a monochromatic or desaturated visual style. It is also good for debugging. In this code, 
-			<code>float grayscale = dot(color.rgb, vec3(0.299, 0.587, 0.114));</code>, we calculate the luminance through the 
+			<code>float grayscale = dot(color.rgb, vec3(1.0 / 3.0));</code>, we calculate the luminance through the 
 			weighted sum of RGB values.
 		</p>
 
 		<p>
-			<b>Normal:</b> This shader encodes surface normals into a normalized color space [0, 1] [0, 1], allowing easy 
+			<b>Normal:</b> This shader encodes surface normals into a normalized color space [0, 1], allowing easy 
 			visualization and debugging of geometry. Green areas represent normals along the positive Y-axis, red along X, and 
 			blue along Z; blended colors indicate intermediate directions. Technically, it transforms normals from view space to 
 			world space using the inverse model-view matrix and outputs them as RGB values in a texture. This is useful in deferred 
@@ -143,6 +143,25 @@
 		</p>
 		
 		<h2>Results</h2>
+
+		<p>
+			Originally, we planned to make a GUI or use keybinds with switch case functionality to toggle different shaders. 
+			Unfortunately, we learned that this is not implementable in native Minecraft and must be modded in. To maintain 
+			compatibility with the spheres and avoid potential issues from additional mods, we chose not to implement this feature, 
+			especially since shaders can be switched using the Settings menu.
+		</p>
+
+		<p>
+			One major challenge was rendering spheres: blocks don't support fragment-level shading, so we used entities to enable 
+			advanced lighting, which introduced complexity in positioning and performance. We also planned to add real-time shader 
+			toggles via GUI or keybinds, but Minecraft lacks a built-in way to switch shaders during runtime without heavy modding. 
+			To avoid introducing bugs or mod conflicts, we dropped that idea and stuck with manual toggling. Additionally, effects 
+			like volumetric fog and bump mapping were difficult to implement properly due to limitations in Minecraft's rendering 
+			pipeline, especially lacking depth access or post-processing flexibility. Another issue we ran into after implementation 
+			was performance issues. In one of our shaders, our FPS went from 130 to 9 fps, due to the high amounts of calculations 
+			our code was completing for light rays. Resources online were either behind a paywall, did not support our Fabric 
+			version, or did not have any relevant documentation / tutorials to follow.
+		</p>
 
 		<h2>References</h2>
 
