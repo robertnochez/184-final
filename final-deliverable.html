@@ -131,19 +131,6 @@
 
 		<h3>Problems We Encountered</h3>
 
-		<h3>Lessons We Learned</h3>
-
-		<p>
-			We learned that Minecraft's rendering model significantly differs from traditional OpenGL, requiring creative 
-			adaptation of standard shading techniques. Entity rendering proved essential for realistic lighting, as blocks are 
-			too limited for fragment-level effects. We also realized that minimizing feature creep—like dynamic shader 
-			switching—helped maintain project stability. Most importantly, debugging shaders in this environment was difficult 
-			without tools like RenderDoc, so we relied on careful visual feedback (e.g., using RGB encodings of normals) and 
-			iterative testing to verify our implementations.
-		</p>
-		
-		<h2>Results</h2>
-
 		<p>
 			Originally, we planned to make a GUI or use keybinds with switch case functionality to toggle different shaders. 
 			Unfortunately, we learned that this is not implementable in native Minecraft and must be modded in. To maintain 
@@ -162,6 +149,19 @@
 			our code was completing for light rays. Resources online were either behind a paywall, did not support our Fabric 
 			version, or did not have any relevant documentation / tutorials to follow.
 		</p>
+
+		<h3>Lessons We Learned</h3>
+
+		<p>
+			We learned that Minecraft's rendering model significantly differs from traditional OpenGL, requiring creative 
+			adaptation of standard shading techniques. Entity rendering proved essential for realistic lighting, as blocks are 
+			too limited for fragment-level effects. We also realized that minimizing feature creep—like dynamic shader 
+			switching—helped maintain project stability. Most importantly, debugging shaders in this environment was difficult 
+			without tools like RenderDoc, so we relied on careful visual feedback (e.g., using RGB encodings of normals) and 
+			iterative testing to verify our implementations.
+		</p>
+		
+		<h2>Results</h2>
 
 		<h2>References</h2>
 
