@@ -52,6 +52,31 @@
 
 		<h3>Spheres</h3>
 
+		<p>
+			Implementing a custom sphere entity in Minecraft required careful manipulation of the entity lifecycle and collision 
+			system. We created a new SphereEntity class that inherits from the Entity type in Minecraft, which allowed us to alter 
+			its default behavior. This was necessary in order to introduce a physics simulation, which includes kinematic behavior, 
+			modeling velocity, friction, gravity, collisions, and even rotational updates. To do so, we override as well as create 
+			new specific methods to get our defined behavior of a ball with realistic motion.
+		</p>
+
+		<p>
+			<b>Sphere Ticks:</b>
+		</p>
+
+		<p>
+			<b>Collisions with Blocks:</b> We use a method, handleBlockBounce, to determine when a sphere collides with a block, 
+			if the collision should result in a bounce, how strong the bounce should be, and whether to play particle effects and 
+			a bounce sound effect. This begins by first getting the sphere's current velocity and initializing a boolean flag 
+			hadSignificantBounce to false, which will be used to track whether the bounce is strong enough to cue visual and audio 
+			feedback. The method then checks if the sphere has experienced a horizontal collision by calculating the bounceVelocity 
+			in the x and z direction by multiplying the preMoveVelocity with a bounce_elasticity. 
+		</p>
+
+		<figure>
+			<img src="final-images/motion.png" alt="Rotation Axis Computation Figure" style="width:70%"/>
+		</figure>
+
 		<h3>Shaders</h3>
 
 		<p>
