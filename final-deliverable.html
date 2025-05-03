@@ -73,9 +73,32 @@
 			in the x and z direction by multiplying the preMoveVelocity with a bounce_elasticity. 
 		</p>
 
+		<p>
+			<b>Collision with Players:</b>
+		</p>
+
+		<p>
+			<b>Collision with Other Spheres:</b>
+		</p>
+
+		<p>
+			<b>Rolling Animation:</b> To create the appropriate mesh rotation matrix for any given sphere translation, we 
+			utilized the Java Quaternionf that takes in an axisOfRotation and rotationAmount. The axis of rotation of a sphere 
+			is given by the cross product between the surface normal vector and the sphere's velocity vector: VxN. The velocity 
+			vector is an attribute of our SphereEntity class, and the surface normal was given by [0, 1, 0] in [X, Y, Z]. Moreover, 
+			the rotation amount was given by: rotationAmount = (movementDistance / circumference) * 2𝜋 .
+		</p>
+
 		<figure>
-			<img src="final-images/motion.png" alt="Rotation Axis Computation Figure" style="width:70%"/>
+			<img src="final-images/motion.png" alt="Rotation Axis Computation Figure" style="width:40%"/>
 		</figure>
+
+		<p>
+			<b>Procedural Modeling Spheres:</b> Our sphere model is created in Java by sampling a unit sphere (defined by the formula x^2 
+			+ y^2 + z^2 = 1) along a discrete stepSize proportional to a specified cubeSize. Using Minecraft's built-in 
+			ModelPartBuilder, we can place blocks of size cubeSize at every sampled point to achieve virtually arbitrary sphere 
+			model resolutions (limited by performance), even in this limited blocky modeling environment.
+		</p>
 
 		<h3>Shaders</h3>
 
@@ -88,8 +111,49 @@
 			on the in-game settings menu to switch shaders rather than introducing GUI controls or extra mod dependencies. 
 		</p>
 
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+					<img src="final-images/basic.png" width="400px"/>
+					<figcaption>No Shaders</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="final-images/default.png" width="400px"/>
+					<figcaption>Default Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="final-images/pixelization.png" width="400px"/>
+					<figcaption>Pixelization Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="final-images/blur.png" width="400px"/>
+					<figcaption>Blur Shader</figcaption>
+				</td>
+			  </tr>
+			  <tr>
+				<td style="text-align: center;">
+					<img src="final-images/fog.png" width="400px"/>
+					<figcaption>Fog Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="final-images/grayscale.png" width="400px"/>
+					<figcaption>Grayscale Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="final-images/normal.png" width="400px"/>
+					<figcaption>Normal Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="final-images/sprite.png" width="400px"/>
+					<figcaption>Sprite-Colored Shader</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div>
+
 		<p>
-			<b>Enhanced:</b> Our most dynamic shader that adds sky rendering with fog, stars, and clouds, shadow mapping with 
+			<b>Default:</b> Our most dynamic shader that adds sky rendering with fog, stars, and clouds, shadow mapping with 
 			distortion, water rendering, physically-based rendering, reflection and ray marching, and deferred shading. We tried 
 			to implement a bidirectional reflectance distribution function that combines the specular and diffuse reflections 
 			using this formula of the Cook-Torrance model: <code>vec3 BRDF = (phongDiffuse + cookTorrance) * NdotL;</code> to get 
