@@ -41,11 +41,12 @@
 		<h2>Abstract</h2>
 
 		<p>
-			In our final project, Spheres & Physics, but in Minecraft!, we modded Minecraft to introduce two major enhancements: 
+			In our final project, Spheres & Physics, but in Minecraft! We modded Minecraft to introduce two major enhancements: 
 			spheres that interacted with physics and custom shaders. The spheres feature realistic physics, particle effects, and 
-			sound effects. Moreover, we utilized unique textures and toggled custom properties to create a variety of spheres that 
-			exhibited distinct behaviors and properties. Additionally, we implemented custom shaders to alter the game's rendering
-			style. When combined, our spheres and shaders add an interesting and dynamic layer on top of Minecraft.
+			sound effects. Moreover, we utilized unique textures, a custom blocky sphere model, and toggled custom properties 
+			to create a variety of spheres that exhibited distinct behaviors and properties. Additionally, we implemented custom 
+			shaders to alter the game's rendering style. When combined, our spheres and shaders add an interesting and dynamic 
+			layer on top of Minecraft.
 		</p>
 
 		<h2>Technical Approach</h2>
@@ -53,11 +54,11 @@
 		<h3>Spheres</h3>
 
 		<p>
-			Implementing a custom sphere entity in Minecraft required careful manipulation of the entity lifecycle and collision 
-			system. We created a new SphereEntity class that inherits from the Entity type in Minecraft, which allowed us to alter 
-			its default behavior. This was necessary in order to introduce a physics simulation, which includes kinematic behavior, 
-			modeling velocity, friction, gravity, collisions, and even rotational updates. To do so, we override as well as create 
-			new specific methods to get our defined behavior of a ball with realistic motion.
+			Implementing a custom sphere entity in Minecraft required careful manipulation of the entity lifecycle and 
+			collision system. We created a new SphereEntity class that inherits from the Entity type in Minecraft, which 
+			allowed us to alter its default behavior. This was necessary in order to introduce a physics simulation, which 
+			includes kinematic behavior, modeling velocity, drag, gravity, collisions, and even rotational updates. To do so, 
+			we override as well as create new specific methods to get our defined behavior of a ball with realistic motion.
 		</p>
 
 		<figure>
@@ -319,16 +320,28 @@
 			The gif below shows that the sphere is able to bounce up and down, similar to a basketball, when dropped.
 		</p>
 
+		<figure>
+			<img src="gifs/ball-bouncing.gif" alt="Sphere bouncing" style="width:40%">
+		</figure>
+
 		<p>
 			The spheres are able to interact with the player, blocks, and other entities—including other spheres. When the ball 
 			collides with something, it has a particle effect and a sound effect that occurs. 
 		</p>
+
+		<figure>
+			<img src="gifs/sphere-collision.gif" alt="Spheres collding" style="width:40%">
+		</figure>
 
 		<p>
 			Our spheres also have weight! In Minecraft, there is a pressure plate block that when stepped on by a player or an 
 			entity, can trigger a mechanism to occur. Our sphere is able to trigger the pressure plate, turning on a light, 
 			demonstrating that the sphere has weight.
 		</p>
+
+		<figure>
+			<img src="gifs/ball-pressure-plate.gif" alt="Sphere with pressure plate" style="width:40%">
+		</figure>
 
 		<p>
 			Our spheres are also able to interact with different types of blocks. We found that the slime block had the most 
@@ -337,11 +350,60 @@
 			its momentum, it comes to an abrupt stop. 
 		</p>
 
+		<figure>
+			<img src="gifs/ball-slime-block.gif" alt="Sphere with slime block" style="width:40%">
+		</figure>
+
 		<p>
 			Next, we wanted to highlight each shader. Different shaders perform better or worse in different environments. Because 
 			of this, we chose environments that had the most interesting results. All gifs show the scene with and without the 
 			shader to create a point of reference. 
 		</p>
+
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+					<img src="gifs/enhanced-shader.gif" width="500px"/>
+					<figcaption>Default Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="gifs/pixelization-shader.gif" width="500px"/>
+					<figcaption>Pixelization Shader</figcaption>
+				</td>
+				</tr>
+				<tr>
+				<td style="text-align: center;">
+					<img src="gifs/blur-shader.gif" width="500px"/>
+					<figcaption>Blur Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="gifs/fog-overworld.gif" width="500px"/>
+					<figcaption>Fog Shader in Overworld</figcaption>
+				</td>
+			  </tr>
+			  <tr>
+				<td style="text-align: center;">
+					<img src="gifs/fog-nether.gif" width="500px"/>
+					<figcaption>Fog Shader in Nether</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="gifs/grayscale-shader.gif" width="500px"/>
+					<figcaption>Grayscale Shader</figcaption>
+				</td>
+				</tr>
+				<tr>
+				<td style="text-align: center;">
+					<img src="gifs/normal-shader.gif" width="500px"/>
+					<figcaption>Normal Shader</figcaption>
+				</td>
+				<td style="text-align: center;">
+					<img src="gifs/sprite-shader.gif" width="500px"/>
+					<figcaption>Sprite-Colored Shader</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div>
 
 		<h2>References</h2>
 
