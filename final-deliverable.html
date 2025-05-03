@@ -60,25 +60,58 @@
 			new specific methods to get our defined behavior of a ball with realistic motion.
 		</p>
 
+		<figure>
+			<img src="final-images/spheres.png" alt="Spheres in Minecraft" style="width:40%"/>
+		</figure>
+
 		<p>
-			<b>Sphere Ticks:</b>
+			<b>Sphere Ticks:</b> At each tick of a sphere entity (16 ms), we check it's current position and then simulate a 
+			gravitational pull and drag to stop the sphere if it is motion by applying a velocity factor of 0.98 to it's current 
+			velocity and as well as a small downward force of -0.04 to simulate gravity. These values were chosen from multiple 
+			tests, as larger and smaller values resulted in less smooth animations. We then deal with collisions by checking and 
+			resolving collisions with blocks, players, or other spheres, and depending on the type and strength of the collision, 
+			which will result in an updated velocity, and spawn particles and trigger a sound effect. We finally render the sphere 
+			appropriately with updateRotation to apply a rolling animation, simulating the sphere to rotate realistically as it 
+			moves. 
 		</p>
 
 		<p>
-			<b>Collisions with Blocks:</b> We use a method, handleBlockBounce, to determine when a sphere collides with a block, 
-			if the collision should result in a bounce, how strong the bounce should be, and whether to play particle effects and 
-			a bounce sound effect. This begins by first getting the sphere's current velocity and initializing a boolean flag 
-			hadSignificantBounce to false, which will be used to track whether the bounce is strong enough to cue visual and audio 
-			feedback. The method then checks if the sphere has experienced a horizontal collision by calculating the bounceVelocity 
-			in the x and z direction by multiplying the preMoveVelocity with a bounce_elasticity. 
+			<b>Collisions with Blocks:</b> We use a method, handleBlockBounce, to determine when a sphere collides with a block, if 
+			the collision should result in a bounce, how strong the bounce should be, and whether to play particle effects and a 
+			bounce sound effect. This begins by first getting the sphere's current velocity and initializing a boolean flag 
+			hadSignificantBounce to false, which will be used to track whether the bounce is strong enough to cue visual and 
+			audio feedback. The method then checks if the sphere has experienced a horizontal collision by calculating the 
+			bounceVelocity in the x and z direction by multiplying the preMoveVelocity with a bounce_elasticity. We also calculate 
+			the same with vertical collisions, only using the y direction and following the same procedure. If the bounceVelocity is 
+			more than our threshold defined by the Min_collision_velocity, the sphere is said to have bounce,d so we set 
+			hadSignificantBounce to true, and it will cue particle effects as well as a sound effect to provide feedback that the 
+			sphere has bounced. 
 		</p>
 
 		<p>
-			<b>Collision with Players:</b>
+			<b>Collision with Players:</b> To allow for players to interact with spheres and kick them, we implemented a method 
+			pushAwayFrom to handle collisions caused by the player. When the sphere detects contact with another entity, it first 
+			checks if that entity is a PlayerEntity. If so, it calculated a direction vector kickDir pointing from the player to 
+			the sphere by subtracting the player's position from the sphere's and normalizing the result. To actually create a 
+			force between the sphere and player, we created an arbitrary constant Player_kick_force and multiplied it against 
+			the direction of the kick and added it to the sphere's current velocity to create a new velocity vector. Similar to 
+			the collision with blocks, we then finally check to see if the newly made velocity caused by the player exceeds 
+			min_collision_velocity and cause the particle effects and sound effect to play if it does. 
 		</p>
 
 		<p>
-			<b>Collision with Other Spheres:</b>
+			<b>Collision with Other Spheres:</b> To make our spheres a bit more interesting and allow for elastic collisions 
+			between two or more spheres, we used the resolveSphereCollision method. To first ensure that the spheres are indeed 
+			touching, we calculate a vector, between, that is calculated from the centers of the two spheres. This allows us to 
+			calculate when the spheres are touching without having to find a point of contact, which would require more resources 
+			and may even lag the system when more than two spheres are colliding. From this distance, we use a minDist, which is 
+			found by getting the radius of the two spheres and adding them together. If the spheres are touching, we compute the 
+			direction vector to identify how the spheres should be pushed apart and also calculate a correction value to resolve 
+			the intersection symmetrically (i.e., both spheres are affected by the elastic collision equally). We then calculate 
+			the relative velocity between the spheres based on their initial velocities and subtract them from each other, and 
+			calculate the impulse using an Elasticity constant set for each sphere entity. The final step is to then update each 
+			sphere's velocity based on this impulse and cause them to bounce off each other realistically, simulating an elastic 
+			collision. 
 		</p>
 
 		<p>
@@ -115,41 +148,41 @@
 			<table style="width: 100%; text-align: center; border-collapse: collapse;">
 			  <tr>
 				<td style="text-align: center;">
-					<img src="final-images/basic.png" width="400px"/>
+					<img src="final-images/basic.png" width="500px"/>
 					<figcaption>No Shaders</figcaption>
 				</td>
 				<td style="text-align: center;">
-					<img src="final-images/default.png" width="400px"/>
+					<img src="final-images/default.png" width="500px"/>
 					<figcaption>Default Shader</figcaption>
 				</td>
 				</tr>
 				<tr>
 				<td style="text-align: center;">
-					<img src="final-images/pixelization.png" width="400px"/>
+					<img src="final-images/pixelization.png" width="500px"/>
 					<figcaption>Pixelization Shader</figcaption>
 				</td>
 				<td style="text-align: center;">
-					<img src="final-images/blur.png" width="400px"/>
+					<img src="final-images/blur.png" width="500px"/>
 					<figcaption>Blur Shader</figcaption>
 				</td>
 			  </tr>
 			  <tr>
 				<td style="text-align: center;">
-					<img src="final-images/fog.png" width="400px"/>
+					<img src="final-images/fog.png" width="500px"/>
 					<figcaption>Fog Shader</figcaption>
 				</td>
 				<td style="text-align: center;">
-					<img src="final-images/grayscale.png" width="400px"/>
+					<img src="final-images/grayscale.png" width="500px"/>
 					<figcaption>Grayscale Shader</figcaption>
 				</td>
 				</tr>
 				<tr>
 				<td style="text-align: center;">
-					<img src="final-images/normal.png" width="400px"/>
+					<img src="final-images/normal.png" width="500px"/>
 					<figcaption>Normal Shader</figcaption>
 				</td>
 				<td style="text-align: center;">
-					<img src="final-images/sprite.png" width="400px"/>
+					<img src="final-images/sprite.png" width="500px"/>
 					<figcaption>Sprite-Colored Shader</figcaption>
 				</td>
 			  </tr>
@@ -225,6 +258,13 @@
 		<h3>Problems We Encountered</h3>
 
 		<p>
+			Our initial design for the ball was a high-poly sphere produced in the Minecraft modeling platform, Blockbench. 
+			However, we soon realized that Minecraft restricts .obj to Block and Item classes. Unfortunately, the block class 
+			offered a less desirable starting point as it does not natively support attributes like 3D velocity. Ultimately, 
+			we found working with the Entity class too valuable and came up with our procedural block modeling instead.
+		</p>
+
+		<p>
 			Originally, we planned to make a GUI or use keybinds with switch case functionality to toggle different shaders. 
 			Unfortunately, we learned that this is not implementable in native Minecraft and must be modded in. To maintain 
 			compatibility with the spheres and avoid potential issues from additional mods, we chose not to implement this feature, 
@@ -246,6 +286,22 @@
 		<h3>Lessons We Learned</h3>
 
 		<p>
+			We first tried to implement spheres as blocks rather than entities, as we initially thought that it would be a 
+			simpler approach within Minecraft's existing architecture. This approach started by extending the Block class and 
+			using a custom .obj model for the sphere, allowing us to easily place spheres on the world, stack them, and use them 
+			like any other building block. However, blocks in Minecraft are inherently static and grid-locked, meaning they can't 
+			interact with the environment as they “stick” to surrounding blocks. We were only limited to making our new sphere 
+			block into a type of FallingBlock, which gave it gravity-like behavior by allowing it to fall whenever it was 
+			unsupported (no block placed underneath it). After recognizing these constraints, we shifted to implementing spheres 
+			as entities that allowed for a far more dynamic behavior. This approach allowed spheres to be spawned into the world 
+			and move independently of the block grid. This gave us the freedom to experiment with animations and collisions, but 
+			these were often difficult to manage, given that heavy computational power was required, especially when using a much 
+			more detailed mesh, which also caused heavier animations to load. To solve these issues, we had to rely on iterative 
+			performance testing and even set up custom scenes with specific blocks to achieve the interactions and gameplay we 
+			wanted. 
+		</p>
+
+		<p>
 			We learned that Minecraft's rendering model significantly differs from traditional OpenGL, requiring creative 
 			adaptation of standard shading techniques. Entity rendering proved essential for realistic lighting, as blocks are 
 			too limited for fragment-level effects. We also realized that minimizing feature creep—like dynamic shader 
@@ -255,6 +311,37 @@
 		</p>
 		
 		<h2>Results</h2>
+
+		<p>
+			After successfully integrating spheres and shaders, we were able to create several unique combinations for scenes and 
+			gameplay. The images below show some examples of this. Note that all of the gifs below that highlight the physics of 
+			our sphere are rendered with our default shader. For this project, we chose to use a basketball texture for our sphere. 
+			The gif below shows that the sphere is able to bounce up and down, similar to a basketball, when dropped.
+		</p>
+
+		<p>
+			The spheres are able to interact with the player, blocks, and other entities—including other spheres. When the ball 
+			collides with something, it has a particle effect and a sound effect that occurs. 
+		</p>
+
+		<p>
+			Our spheres also have weight! In Minecraft, there is a pressure plate block that when stepped on by a player or an 
+			entity, can trigger a mechanism to occur. Our sphere is able to trigger the pressure plate, turning on a light, 
+			demonstrating that the sphere has weight.
+		</p>
+
+		<p>
+			Our spheres are also able to interact with different types of blocks. We found that the slime block had the most 
+			noticeable effect. The slime block is extremely sticky, slowing down the movement of entities when they walk on it. 
+			When the sphere moves across the slime block, its initial velocity from being kicked propels it forward. As it loses 
+			its momentum, it comes to an abrupt stop. 
+		</p>
+
+		<p>
+			Next, we wanted to highlight each shader. Different shaders perform better or worse in different environments. Because 
+			of this, we chose environments that had the most interesting results. All gifs show the scene with and without the 
+			shader to create a point of reference. 
+		</p>
 
 		<h2>References</h2>
 
@@ -268,6 +355,13 @@
 		</ul>
 
 		<h2>Contributions From Each Team Member</h2>
+
+		<ul>
+			<li>Jordan: Developed the default, pixelization, blur, & fog shaders. Wrote the majority of the proposal write up and slides. Wrote the final deliverable.</li>
+			<li>Isabella: Developed grayscale, normal, sprite-colored, & fog shaders. Wrote the majority of the milestone and slides. Wrote the final deliverable.</li>
+			<li>Joel: Sphere model generation scripting, texturing, and rotation mechanics. Edited the final video. Wrote the final deliverable.</li>
+			<li>Robert: Implemented sphere physics with collisions. Set up mod structure. Created final video outline. Wrote the final deliverable.</li>
+		</ul>
 		
 		</div>
 	</body>
